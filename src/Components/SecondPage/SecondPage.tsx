@@ -39,16 +39,11 @@ export const SecondPage = () => {
             console.log('WebSocket is connected.');
         };
 
-        socket.current.onmessage = function (event) {
-            const message = event.data;
-            console.log(message);
-        };
-
         socket.current.onclose = function (event) {
             if (event.wasClean) {
-                alert(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+                console.log(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
             } else {
-                alert('Соединение прервано');
+                console.log('Соединение прервано');
             }
         };
     }, []);

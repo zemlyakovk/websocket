@@ -23,11 +23,13 @@ export const FirstPage = () => {
 
         socket.current.onclose = function (event) {
             if (event.wasClean) {
-                alert(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+                console.log(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
             } else {
-                alert('Соединение прервано');
+                console.log('Соединение прервано');
             }
         };
+
+        return () => {socket.current?.close(1000, "работа закончена")}
     }, []);
     return (
         <>
